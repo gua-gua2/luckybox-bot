@@ -40,7 +40,7 @@ async function sendLuckyNumber() {
   const [a, b] = generateLuckyNumbers();
   const message = createMessage(a, b);
 
-  await fetch("🔗你的 Discord Webhook URL", {
+  await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ content: message }),
