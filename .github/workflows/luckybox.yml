@@ -2,7 +2,7 @@ name: Daily Luckybox
 
 on:
   schedule:
-    - cron: '45 19 * * *'  # UTC 19:45，對應台灣時間 03:45 AM
+    - cron: '05 21 * * *'  # UTC 19:45，對應台灣時間 03:45 AM
   workflow_dispatch:       # 可手動觸發
 
 jobs:
@@ -22,10 +22,10 @@ jobs:
         run: npm init -y
 
       - name: Install dependencies
-        run: npm install node-fetch@2
+        run: npm install node-fetch@2 moment-timezone
 
       - name: Run script
-        run: node luckybox.js  # 確保使用正確的路徑
+        run: node luckybox.js  # 這裡的路徑應該是相對於 `.github` 目錄的正確路徑
 
 
 
