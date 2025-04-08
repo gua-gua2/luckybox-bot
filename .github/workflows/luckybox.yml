@@ -1,0 +1,25 @@
+name: Daily Luckybox
+
+on:
+  schedule:
+    - cron: '0 16 * * *'  # 每天台灣 00:00，GitHub 用 UTC 時間
+  workflow_dispatch:      # 也支援手動執行
+
+jobs:
+  send-luckybox:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install node-fetch@2
+
+      - name: Run script
+        run: node luckybox.js
