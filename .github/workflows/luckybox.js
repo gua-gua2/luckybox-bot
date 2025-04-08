@@ -1,41 +1,26 @@
 const fetch = require('node-fetch');
 
-// 測試 API 請求
-async function testFetch() {
-  try {
-    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-    const data = await response.json();
-    console.log('Fetch 成功！', data);
-  } catch (error) {
-    console.error('Fetch 錯誤:', error);
-  }
+// 計算並返回昨天的日期格式（例如 "4月8日"）
+function getYesterdayDateText() {
+  const now = new Date();
+  now.setDate(now.getDate() - 1); // 減去一天
+  const month = now.getMonth() + 1; // JavaScript的月份從0開始，所以加1
+  const day = now.getDate();
+  return `${month}月${day}日`;
 }
 
-// 測試 API 是否正常工作
-testFetch();
-
-// 生成隨機的兩個數字
+// 生成兩個隨機數字
 function generateLuckyNumbers() {
   const nums = [4, 5, 6, 7, 8, 9]; // 避開 0～3
   const a = nums[Math.floor(Math.random() * nums.length)];
   let b = nums[Math.floor(Math.random() * nums.length)];
   while (b === a) b = nums[Math.floor(Math.random() * nums.length)];
-  return [a, b]; // 返回兩個不同的數字
+  return [a, b];
 }
 
-// 獲取昨天的日期
-function getYesterdayDateText() {
-  const now = new Date();
-  now.setDate(now.getDate() - 1); // 設置為昨天的日期
-  const month = now.getMonth() + 1; // 月份從0開始，需加1
-  const day = now.getDate();
-  return `${month}月${day}日`; // 返回格式 "4月8日"
-}
-
-// 創建盲盒訊息
+// 創建消息
 function createMessage(a, b) {
-  const dateText = getYesterdayDateText(); // 取得昨天日期
-
+  const dateText = getYesterdayDateText(); // 使用昨天日期
   return `🎉 **@everyone 今日盲盒揭曉！** 🎉
 
 
@@ -65,23 +50,20 @@ GONXT 平台ID：8904321689
 `;
 }
 
-// 發送盲盒訊息
+// 發送盲盒訊息到 Discord
 async function sendLuckyNumber() {
-  const [a, b] = generateLuckyNumbers(); // 隨機生成數字
-  const message = createMessage(a, b); // 創建訊息
+  const [a, b] = generateLuckyNumbers();
+  const message = createMessage(a, b);
 
-  try {
-    await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: message }),
-    });
+  await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content: message }),
+  });
 
-    console.log("盲盒訊息已送出！");
-  } catch (error) {
-    console.error('發送訊息時發生錯誤:', error);
-  }
+  console.log("盲盒訊息已送出！");
 }
 
-// 執行發送盲盒訊息
+// 執行發送
 sendLuckyNumber();
+
