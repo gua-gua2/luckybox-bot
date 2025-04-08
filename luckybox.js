@@ -18,7 +18,6 @@ function getYesterdayDateText() {
 
 function createMessage(a, b) {
   const dateText = getYesterdayDateText();
-  const message = '@everyone';
   return `${dateText}盲盒數字為：${a}/${b}
 玩家賽後數據ACS内包含當日數字（例：${a}${a}、${a}${b}、${b}${a}、${b}${b}、1${a}${b} 等）
 請至 ⁠🧧»數字盲盒-進行 登記
@@ -40,7 +39,7 @@ async function sendLuckyNumber() {
   const [a, b] = generateLuckyNumbers();
   const message = createMessage(a, b);
 
-  await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY", {
+  await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY",  const message = '@everyone'; {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ content: message }),
