@@ -10,7 +10,10 @@ function generateLuckyNumbers() {
 }
 
 function getYesterdayDateText() {
-  // 取得台灣時區的昨天日期
+  // Debug：印出台灣現在與昨天的時間
+  console.log("台灣時間現在是：", moment().tz("Asia/Taipei").format());
+  console.log("台灣時間昨天是：", moment().tz("Asia/Taipei").subtract(1, "day").format());
+
   const yesterday = moment().tz("Asia/Taipei").subtract(1, "day");
   const month = yesterday.month() + 1;
   const day = yesterday.date();
