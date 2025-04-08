@@ -22,6 +22,6 @@ jobs:
         run: npm install node-fetch@2
 
       - name: Run luckybox.js
-        run: node .github/workflows/luckybox.js  # 指向正確的路徑
+        run: node .github/workflows/luckybox.js  # 這裡修改為正確的路徑
 
 
