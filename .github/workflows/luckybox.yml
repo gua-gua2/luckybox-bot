@@ -2,7 +2,7 @@ name: Daily Luckybox
 
 on:
   schedule:
-    - cron: '45 19 * * *'  # UTC 19:45，對應台灣時間 03:45 AM
+    - cron: '18 21 * * *'  # UTC 19:45，對應台灣時間 03:45 AM
   workflow_dispatch:       # 可手動觸發
 
 jobs:
