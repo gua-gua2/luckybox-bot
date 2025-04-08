@@ -18,7 +18,7 @@ function getYesterdayDateText() {
 
 function createMessage(a, b) {
   const dateText = getYesterdayDateText();
-
+@everyone
   return `${dateText}盲盒數字為：${a}/${b}
 玩家賽後數據ACS内包含當日數字（例：${a}${a}、${a}${b}、${b}${a}、${b}${b}、1${a}${b} 等）
 請至 ⁠🧧»數字盲盒-進行 登記
