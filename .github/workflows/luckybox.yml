@@ -25,7 +25,8 @@ jobs:
         run: npm install node-fetch@2
 
       - name: Run script
-        run: node src/luckybox.js  # 修改路徑
+        run: node luckybox.js  # 確保使用正確的路徑
+
 
 
 
