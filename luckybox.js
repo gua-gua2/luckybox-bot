@@ -1,7 +1,8 @@
 const fetch = require("node-fetch");
 
 function generateLuckyNumbers() {
-  const nums = Array.from({ length: 10 }, (_, i) => i);
+  // 修改這一行，避免選擇 0 到 3
+  const nums = Array.from({ length: 6 }, (_, i) => i + 4); // 生成 4 到 9 的數字
   const a = nums[Math.floor(Math.random() * nums.length)];
   let b = nums[Math.floor(Math.random() * nums.length)];
   while (b === a) b = nums[Math.floor(Math.random() * nums.length)];
