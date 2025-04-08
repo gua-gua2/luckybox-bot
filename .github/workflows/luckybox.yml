@@ -2,7 +2,7 @@ name: Daily Luckybox
 
 on:
   schedule:
-    - cron: '59 20 * * *'  # UTC 19:45，對應台灣時間 03:45 AM
+    - cron: '45 19 * * *'  # UTC 19:45，對應台灣時間 03:45 AM
   workflow_dispatch:       # 可手動觸發
 
 jobs:
@@ -25,6 +25,7 @@ jobs:
         run: npm install node-fetch@2
 
       - name: Run script
-        run: node luckybox.js
+        run: node src/luckybox.js  # 修改路徑
+
 
 
