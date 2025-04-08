@@ -1,4 +1,20 @@
-const fetch = require("node-fetch");
+const fetch = require('node-fetch');
+
+// 測試 API 請求
+async function testFetch() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+    const data = await response.json();
+    console.log('Fetch 成功！', data);
+  } catch (error) {
+    console.error('Fetch 錯誤:', error);
+  }
+}
+
+// 呼叫測試函數
+testFetch();
+
+// 以下是你的原本的 luckybox 程式碼
 
 function generateLuckyNumbers() {
   const nums = [4, 5, 6, 7, 8, 9]; // 避開 0～3
@@ -27,7 +43,7 @@ function createMessage(a, b) {
 
 🎯 **如何中獎？**  
 你的對戰 ACS 數據中包含任兩碼組合，即可得獎！  
-例：${a}${a}、${a}${b}、${b}${b}、1${a}${b}、1${b}${a}、1${a}${a}、2${a}${b}、2${b}${b} 等..
+例：${a}${a}、${a}${b}、${b}${b}、1${a}${b}、1${b}${a}、1${a}${a}、2${a}${b}、2${b}${b} 等..  
 
 📌 **請前往：** 🧧»https://ptb.discord.com/channels/1299287200697024593/1336558795651813377 登記
 
@@ -52,21 +68,15 @@ async function sendLuckyNumber() {
   const [a, b] = generateLuckyNumbers();
   const message = createMessage(a, b);
 
-  // 直接硬編碼 Webhook URL
-  const webhookUrl = "https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY";
+  await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ content: message }),
+  });
 
-  try {
-    await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ content: message }),
-    });
-
-    console.log("盲盒訊息已送出！");
-  } catch (error) {
-    console.error("發送盲盒訊息失敗", error);
-  }
+  console.log("盲盒訊息已送出！");
 }
 
 sendLuckyNumber();
+
 
