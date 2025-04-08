@@ -10,11 +10,9 @@ function generateLuckyNumbers() {
 }
 
 function getYesterdayDateText() {
-  // Debug：印出台灣現在與昨天的時間
-  console.log("台灣時間現在是：", moment().tz("Asia/Taipei").format());
-  console.log("台灣時間昨天是：", moment().tz("Asia/Taipei").subtract(1, "day").format());
-
+  // 取得台灣時區的昨天日期
   const yesterday = moment().tz("Asia/Taipei").subtract(1, "day");
+  console.log("昨天的台灣時間：", yesterday.format("YYYY-MM-DD"));  // 加上這行檢查
   const month = yesterday.month() + 1;
   const day = yesterday.date();
   return `${month}月${day}日`;
@@ -31,7 +29,7 @@ function createMessage(a, b) {
 
 🎯 **如何中獎？**  
 你的對戰 ACS 數據中包含任兩碼組合，即可得獎！  
-例：${a}${a}、${a}${b}、${b}${b}、1${a}${b}、1${b}${a}、1${a}${a}、2${a}${b}、2${b}${b} 等..
+例：${a}${a}、${a}${b}、${b}${b}、1${a}${b}、1${b}${a}、1${a}${a}、2${a}${b}、2${b}${b} 等..  
 
 📌 **請前往：** 🧧»https://ptb.discord.com/channels/1299287200697024593/1336558795651813377 登記
 
@@ -66,5 +64,6 @@ async function sendLuckyNumber() {
 }
 
 sendLuckyNumber();
+
 
 
