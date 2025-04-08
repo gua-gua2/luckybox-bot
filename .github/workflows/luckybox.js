@@ -1,26 +1,25 @@
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
+const moment = require("moment-timezone");
 
-// 計算並返回昨天的日期格式（例如 "4月8日"）
-function getYesterdayDateText() {
-  const now = new Date();
-  now.setDate(now.getDate() - 1); // 減去一天
-  const month = now.getMonth() + 1; // JavaScript的月份從0開始，所以加1
-  const day = now.getDate();
-  return `${month}月${day}日`;
-}
-
-// 生成兩個隨機數字
 function generateLuckyNumbers() {
-  const nums = [4, 5, 6, 7, 8, 9]; // 避開 0～3
+  const nums = [4, 5, 6, 7, 8, 9];
   const a = nums[Math.floor(Math.random() * nums.length)];
   let b = nums[Math.floor(Math.random() * nums.length)];
   while (b === a) b = nums[Math.floor(Math.random() * nums.length)];
   return [a, b];
 }
 
-// 創建消息
+function getYesterdayDateText() {
+  // 取得台灣時區的昨天日期
+  const yesterday = moment().tz("Asia/Taipei").subtract(1, "day");
+  const month = yesterday.month() + 1;
+  const day = yesterday.date();
+  return `${month}月${day}日`;
+}
+
 function createMessage(a, b) {
-  const dateText = getYesterdayDateText(); // 使用昨天日期
+  const dateText = getYesterdayDateText();
+
   return `🎉 **@everyone 今日盲盒揭曉！** 🎉
 
 
@@ -50,7 +49,6 @@ GONXT 平台ID：8904321689
 `;
 }
 
-// 發送盲盒訊息到 Discord
 async function sendLuckyNumber() {
   const [a, b] = generateLuckyNumbers();
   const message = createMessage(a, b);
@@ -64,6 +62,6 @@ async function sendLuckyNumber() {
   console.log("盲盒訊息已送出！");
 }
 
-// 執行發送
 sendLuckyNumber();
+
 
