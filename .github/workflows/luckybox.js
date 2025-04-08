@@ -1,7 +1,6 @@
-const fetch = require('node-fetch');  // 使用 node-fetch v2
-const moment = require('moment-timezone');  // 引入 moment-timezone 用於處理時區
+const fetch = require('node-fetch');
+const moment = require('moment-timezone');
 
-// 生成兩個隨機數字
 function generateLuckyNumbers() {
   const nums = [4, 5, 6, 7, 8, 9];
   const a = nums[Math.floor(Math.random() * nums.length)];
@@ -10,23 +9,23 @@ function generateLuckyNumbers() {
   return [a, b];
 }
 
-// 取得昨天的日期，並顯示為台灣時間
 function getYesterdayDateText() {
   // 取得台灣時區的昨天日期
-  const yesterday = moment().tz("Asia/Taipei").subtract(1, "day");
-  console.log("昨天的台灣時間：", yesterday.format("YYYY-MM-DD"));  // 檢查日期格式
+  const yesterday = moment().tz('Asia/Taipei').subtract(1, 'day');
+  console.log('昨天的台灣時間：', yesterday.format('YYYY-MM-DD'));
   const month = yesterday.month() + 1;
   const day = yesterday.date();
   return `${month}月${day}日`;
 }
 
-// 建立發送的訊息
 function createMessage(a, b) {
   const dateText = getYesterdayDateText();
 
   return `🎉 **@everyone 今日盲盒揭曉！** 🎉
 
+
 📅 日期：${dateText}      🎲 數字：${a} / ${b}
+
 
 🎯 **如何中獎？**  
 你的對戰 ACS 數據中包含任兩碼組合，即可得獎！  
@@ -51,22 +50,20 @@ GONXT 平台ID：8904321689
 `;
 }
 
-// 發送訊息到 Discord
 async function sendLuckyNumber() {
-  const [a, b] = generateLuckyNumbers();  // 生成隨機數字
-  const message = createMessage(a, b);     // 創建發送的訊息
+  const [a, b] = generateLuckyNumbers();
+  const message = createMessage(a, b);
 
-  // 發送 POST 請求到 Discord Webhook
-  await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content: message }),  // 發送的訊息
+  await fetch('https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content: message }),
   });
 
-  console.log("盲盒訊息已送出！");  // 打印訊息以確認發送
+  console.log('盲盒訊息已送出！');
 }
 
-sendLuckyNumber();  // 呼叫發送函數
+sendLuckyNumber();
 
 
 
