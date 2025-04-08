@@ -19,33 +19,39 @@ function getYesterdayDateText() {
 function createMessage(a, b) {
   const dateText = getYesterdayDateText();
 
-  return `🧧 **本日盲盒開獎** 🧧
+  return `🎉 **@everyone 今日盲盒揭曉！** 🎉
 
-${dateText} **盲盒數字為：** **${a}**/**${b}**
+✨ \`\`\`
+📅 日期：${dateText}
+🎲 數字：${a} / ${b}
+\`\`\` ✨
 
-玩家賽後數據ACS內包含當日數字  
-（例：${a}${a}、${a}${b}、${b}${a}、${b}${b}、1${a}${b} 等）
+🎯 **如何中獎？**  
+你的對戰 ACS 數據中包含任兩碼組合，即有機會得獎！  
+例：${a}${a}、${a}${b}、${b}${a}、${b}${b}、1${a}${b}…
 
-請至 🧧»數字盲盒-進行 登記
+📌 **請前往：** 🧧»數字盲盒-進行 登記
 
-⏰ **盲盒活動有效時間：**  
-每日下午14:00 - 晚上23:59
+🕑 **盲盒有效時間：**  
+每日 14:00 ～ 當天 23:59
 
 🚨 **注意事項：**  
-每日登記截止時間為下次盲盒公布前  
-未改名者無法參加任何活動
+❗ 登記截止為下次盲盒開獎前  
+❗ 未更改名稱者無法參與活動
 
-🎁 **領獎模板：**
+🎁 **領獎範例格式：**
 
-(平台ID在設定裡看)  
-GONXT 平台ID：8904321689  
-平台暱稱：xxxxx  
-日期：xx/xx`;
+\`\`\`
+GONXT 平台ID：8904321689
+平台暱稱：xxxxx
+日期：${dateText}
+\`\`\`
+`;
 }
 
 async function sendLuckyNumber() {
   const [a, b] = generateLuckyNumbers();
-  const message = `@everyone\n\n${createMessage(a, b)}`;
+  const message = createMessage(a, b);
 
   await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY", {
     method: "POST",
@@ -57,3 +63,4 @@ async function sendLuckyNumber() {
 }
 
 sendLuckyNumber();
+
