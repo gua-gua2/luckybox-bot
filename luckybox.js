@@ -39,13 +39,18 @@ async function sendLuckyNumber() {
   const [a, b] = generateLuckyNumbers();
   const message = createMessage(a, b);
 
-  await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY",  const message = '@everyone'; {
+  // @everyone 要加到訊息裡面
+  const finalMessage = `@everyone\n${message}`;
+
+  // 正確的 fetch 呼叫
+  await fetch("https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ content: message }),
+    body: JSON.stringify({ content: finalMessage }), // 傳遞最終的訊息
   });
 
   console.log("盲盒訊息已送出！");
 }
 
 sendLuckyNumber();
+
