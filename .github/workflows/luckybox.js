@@ -57,6 +57,10 @@ GONXT 平台ID：8904321689
 語音時間：16:40
 ACS：XXX 
 \`\`\`
+
+📸 **範例圖片：**
+https://media.discordapp.net/attachments/1336558795651813377/1363830699647565967/8b4b95119ee2771f5e68b5395ba28d1.png?ex=6808c751&is=680775d1&hm=6ebe16008d3a5087b2c39df0e79b1dcd3977d8cdf1f31a7f03af36fe3cb72c72&=&format=webp&quality=lossless&width=1285&height=723
+https://media.discordapp.net/attachments/1336558795651813377/1363830700100292618/fa0b41e966910852bc0f3c238c000bc.png?ex=6808c751&is=680775d1&hm=ea8846dd4bb7704678a98be54fc6547deab816d0d36330dee1901fc0583f471a&=&format=webp&quality=lossless&width=1285&height=723
 `;
 }
 
