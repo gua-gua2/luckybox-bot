@@ -84,7 +84,7 @@ async function sendLuckyNumber() {
   const [a, b] = generateLuckyNumbers();
   const { message, embeds } = createMessage(a, b);
 
-  await fetch('https://ptb.discord.com/api/webhooks/1358737810059821073/NgGSEFhLMUSggt_Z4sjV_3Tp_yieIv_U3IeKwFWRjUJwtSbUmRTmkPt_UFoXTcWEM5pY', {
+  await fetch('https://ptb.discord.com/api/webhooks/1379849361735028769/YTnvr1AW-SBNRXR2blu5hAdD6odoORQOrf8QlDbD6lVk_YZw8EqU8QsNQc8IQxSHyKqE', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
